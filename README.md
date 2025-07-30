@@ -2,6 +2,24 @@
 
 API desenvolvida para processar dados de usuários do UOL a partir de arquivos texto, aplicando filtros por faixa de mensagens, pasta `INBOX` e username.
 
+
+## 🚀 Como rodar com Docker Compose
+
+### Pré-requisitos
+
+- [Docker](https://www.docker.com/)
+- [Docker Compose](https://docs.docker.com/compose/)
+
+### Clone o projeto:
+
+```bash
+git clone https://github.com/seu_usuario/desafio-uol.git
+cd desafio-uol
+
+docker-compose up --build
+docker-compose up -d
+http://localhost:8001
+
 ## 📂 Upload de Arquivo
 
 **Endpoint:** `PUT /upload`  
