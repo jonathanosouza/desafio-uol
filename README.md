@@ -19,7 +19,7 @@ cd desafio-uol
 docker-compose up --build
 docker-compose up -d
 http://localhost:8001
-
+```
 ## 📂 Upload de Arquivo
 
 **Endpoint:** `PUT /upload`  
