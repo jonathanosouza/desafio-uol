@@ -26,7 +26,7 @@ docker-compose up --build
 docker-compose up -d
 ```
 
-Acesse: [http://localhost:8001](http://localhost:8001)
+Acesse: http://localhost:8001
 
 ---
 
@@ -47,13 +47,13 @@ Campo: file | arquivo.txt
 
 ## 📚 Listar Arquivos
 
-**Endpoint:** `GET /listar_arquivos`  
+**Endpoint:** `GET /arquivos`  
 **Descrição:** Retorna a lista de arquivos disponíveis na pasta `data/`.
 
 **Exemplo:**
 
 ```
-GET http://localhost:8001/listar_arquivos
+GET http://localhost:8001/arquivos
 ```
 
 ---
@@ -68,14 +68,13 @@ GET http://localhost:8001/listar_arquivos
 | Parâmetro | Tipo    | Obrigatório | Descrição                       |
 |-----------|---------|-------------|---------------------------------|
 | filename  | string  | ✅ Sim       | Nome do arquivo em `data/`      |
-| username  | string  | ✅ Sim       | Parte ou nome completo do e-mail |
-| mode      | string  | ❌ Não       | `"min"` para menor arquivo       |
+| size      | string  | ❌ Não       | `"-min"` para menor arquivo       |
 
 **Exemplos:**
 
 ```
-GET http://localhost:8001/size?filename=input&username=joao@uol.com.br
-GET http://localhost:8001/size?filename=input&username=joao@uol.com.br&mode=min
+GET http://localhost:8001/size?nome_arquivo=input&size=-min
+GET http://localhost:8001/size?nome_arquivo=input
 ```
 
 ---
@@ -107,7 +106,7 @@ GET http://localhost:8001/usuarios_por_mensagens?nome_arquivo=input&page=2&limit
 
 ## 🔢 Listar Usuários Ordenados por Mensagens
 
-**Endpoint:** `GET /ordenar_usuarios`  
+**Endpoint:** `GET /usuarios_ordenados`  
 **Descrição:** Lista os usuários ordenados por número de mensagens de forma decrescente.
 
 **Parâmetros:**
@@ -115,11 +114,15 @@ GET http://localhost:8001/usuarios_por_mensagens?nome_arquivo=input&page=2&limit
 | Parâmetro     | Obrigatório | Tipo     | Descrição                               |
 |---------------|-------------|----------|-----------------------------------------|
 | nome_arquivo  | ✅ Sim      | string   | Nome do arquivo dentro da pasta `data/` |
+| username      | ❌ Não      | string   | Filtro por parte do e-mail                                     |
+| page          | ❌ Não      | inteiro  | Número da página (default: 1)                                  |
+| limit         | ❌ Não      | inteiro  | Resultados por página (default: 10)                            |
 
 **Exemplo:**
 
 ```
-GET http://localhost:8001/ordenar_usuarios?nome_arquivo=input
+GET http://localhost:8001/usuarios_ordenados?nome_arquivo=input
+GET http://localhost:8001/usuarios_ordenados?nome_arquivo=input&orderby=-desc&page=5&limit=50
 ```
 
 ---
